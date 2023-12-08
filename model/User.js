@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema(
     password: { type: String, required: true },
     point: { type: Number, default: 0 },
     isAdmin: { type: Boolean, default: false },
+    spent: { type: Number, default: 0 },
     purchasedGifts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Gift" }],
   },
   { timestamps: true }

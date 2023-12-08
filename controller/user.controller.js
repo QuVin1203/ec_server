@@ -42,6 +42,7 @@ const exchangeGift = async (req, res) => {
       return res.status(404).json("Không đủ điểm để đổi quà");
     }
     user.point -= gift.price;
+    user.spent += gift.price;
     user.purchasedGifts.push(gift);
 
     await user.save();
@@ -49,13 +50,6 @@ const exchangeGift = async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-};
-const getGiftByUser = async (req, res) => {
-  const { userId } = req.params;
-
-  try {
-    const user = await User.findById(userId);
-  } catch (error) {}
 };
 
 export { getAllUser, deleteUser, updateUser, exchangeGift };
